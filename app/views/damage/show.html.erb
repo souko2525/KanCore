@@ -1,0 +1,28 @@
+<h1>装甲がMAXの時1撃で撃破できる攻撃力</h1>
+<ul>
+<li>攻撃力は交戦形態を除くキャップ前補正時の攻撃力</li>
+<li>陣形は単縦陣を想定</li>
+<li>昼の砲撃戦を想定しているので支援艦隊に役に立つかも</li>
+</ul>
+<table border=1>
+  <tr>
+   <td>名前</td> 
+   <td>耐久</td>
+   <td>同航戦</td>
+   <td>T字有利</td>
+   <td>T字不利</td>
+   <td>反抗戦</td>
+ </tr>
+ <% i = 0 %>
+ <% @enemies.each do |enemy| %>
+    <tr>
+      <td><%= enemy.name %></td>
+      <td><%= enemy.hp %></td>
+      <td><%= @results[i]["doko"] %></td>
+      <td><%= @results[i]["t_u"] %></td>
+      <td><%= @results[i]["t_f"] %></td>
+      <td><%= @results[i]["hanko"] %></td>
+    </tr>
+    <% i+=1 %>
+ <% end %>
+</table>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  hp: 
+  fire: 1
+  torpedo: 1
+  defence: 1
+  equipment_type: MyString
+
+two:
+  name: MyString
+  hp: 
+  fire: 1
+  torpedo: 1
+  defence: 1
+  equipment_type: MyString
