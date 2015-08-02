@@ -1,27 +1,51 @@
-<h1>装甲がMAXの時1撃で撃破できる攻撃力</h1>
+<h1>装甲がMAXの時一撃で撃破できる攻撃力</h1>
 <ul>
-<li>攻撃力は交戦形態を除くキャップ前補正時の攻撃力</li>
-<li>陣形は単縦陣を想定</li>
-<li>昼の砲撃戦を想定しているので支援艦隊に役に立つかも</li>
+<li>攻撃力は交戦形態を除くキャップ前の攻撃力</li>
+<li>昼の砲撃戦を想定しているので空母以外はマイナス5</li>
+<li>空母系は [(火力 + 雷装 + 改修強化値(砲撃) + [爆装 × 1.3]) × 1.5] + 55の値が表に示す値になればいい</li>
+<li>用途的には支援艦隊の計算に役に立つはず</li>
 </ul>
 <table border=1>
-  <tr>
-   <td>名前</td> 
-   <td>耐久</td>
-   <td>同航戦</td>
-   <td>T字有利</td>
-   <td>T字不利</td>
-   <td>反抗戦</td>
- </tr>
  <% i = 0 %>
  <% @enemies.each do |enemy| %>
+    <% if i%10 == 0 then %>
+        <td>名前</td>
+        <td>耐久</td>
+        <td>火力</td>
+        <td>雷装</td>
+        <td>装甲</td>
+        <td>陣形</td>
+        <td>同航戦</td>
+        <td>T字有利</td>
+        <td>T字不利</td>
+        <td>反抗戦</td>
+    <% end %>
+
     <tr>
-      <td><%= enemy.name %></td>
-      <td><%= enemy.hp %></td>
+      <td rowspan="3"><%= enemy.name %></td>
+      <td rowspan="3"><%= enemy.hp %></td>
+      <td rowspan="3"><%= enemy.fire %></td>
+      <td rowspan="3"><%= enemy.torpedo %></td>
+      <td rowspan="3"><%= enemy.defence %></td>
+      <td>複縦陣</td>
       <td><%= @results[i]["doko"] %></td>
       <td><%= @results[i]["t_u"] %></td>
       <td><%= @results[i]["t_f"] %></td>
       <td><%= @results[i]["hanko"] %></td>
+    </tr>
+    <tr>
+      <td>複縦陣</td>
+      <td><%= @results[i]["f_doko"] %></td>
+      <td><%= @results[i]["f_t_u"] %></td>
+      <td><%= @results[i]["f_t_f"] %></td>
+      <td><%= @results[i]["f_hanko"] %></td>
+    </tr>
+    <tr>
+      <td>輪形陣</td>
+      <td><%= @results[i]["r_doko"] %></td>
+      <td><%= @results[i]["r_t_u"] %></td>
+      <td><%= @results[i]["r_t_f"] %></td>
+      <td><%= @results[i]["r_hanko"] %></td>
     </tr>
     <% i+=1 %>
  <% end %>
